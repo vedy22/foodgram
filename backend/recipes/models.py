@@ -4,6 +4,7 @@ from users.models import User
 
 MAX_LENGTH = 200
 
+
 class Tag(models.Model):
     """
     Модель для хранения информации о тегах.
@@ -15,13 +16,13 @@ class Tag(models.Model):
     """
 
     name = models.CharField(
-        MAX_LENGTH,
+        max_length=MAX_LENGTH,
         db_index=True,
         verbose_name="Название тега",
     )
     color = models.CharField(max_length=7, verbose_name="Цветовой HEX-код")
     slug = models.SlugField(
-        MAX_LENGTH,
+        max_length=MAX_LENGTH,
         unique=True,
         verbose_name="Уникальный слаг",
     )
@@ -45,12 +46,12 @@ class Ingredient(models.Model):
     """
 
     name = models.CharField(
-        MAX_LENGTH,
+        max_length=MAX_LENGTH,
         db_index=True,
         verbose_name="Название ингредиента",
     )
     measurement_unit = models.CharField(
-        MAX_LENGTH,
+        max_length=MAX_LENGTH,
         verbose_name="Единицы измерения",
     )
 
@@ -91,7 +92,7 @@ class Recipe(models.Model):
         verbose_name="Автор публикации",
     )
     name = models.CharField(
-        MAX_LENGTH,
+        max_length=MAX_LENGTH,
         db_index=True,
         verbose_name="Название рецепта",
     )

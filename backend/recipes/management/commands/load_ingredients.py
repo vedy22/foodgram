@@ -1,7 +1,7 @@
 import csv
 
 from django.conf import settings
-from django.core.management import BaseCommand, CommandError
+from django.core.management import BaseCommand
 
 from recipes.models import Ingredient
 
@@ -10,6 +10,7 @@ ModelsCSV = {
 }
 
 EXPECTED_HEADER = ['name', 'measurement_unit']
+
 
 class Command(BaseCommand):
     help = "Импорт ингредиентов из csv файла"
