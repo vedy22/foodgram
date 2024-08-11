@@ -1,7 +1,11 @@
-FROM python:3.9-slim
+FROM python:3.9
+
 WORKDIR /app
-COPY . .
+
+COPY requirements.txt .
+
 RUN pip install -r requirements.txt --no-cache-dir
-RUN apt-get update
-RUN apt-get -y install fonts-dejavu
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "foodgram.wsgi", "--reload"]
+
+COPY . .
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "foodgram.wsgi"]
