@@ -32,7 +32,7 @@ class RecipeIngredientInline(admin.TabularInline):
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ("pk", "name", "author", "in_favorites")
     list_filter = ("author", "name", "tags")
-    inlines = (RecipeIngredientInline)
+    inlines = (RecipeIngredientInline,)
 
     @display(description="Количество в избранных")
     def in_favorites(self, obj):
