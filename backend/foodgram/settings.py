@@ -105,8 +105,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "collected_static"
 
-CSV_DIR = os.path.join(BASE_DIR, 'data')
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
