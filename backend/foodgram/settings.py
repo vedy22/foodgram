@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from django.conf import settings
 from dotenv import load_dotenv
 
 
@@ -8,7 +9,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-CSV_DIR = os.path.join(BASE_DIR, 'data')
+CSV_DIR = os.path.join(settings.BASE_DIR, "data/ingredients.csv")
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'SECRET_KEY')
 
