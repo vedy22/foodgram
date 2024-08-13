@@ -30,10 +30,11 @@ services:
       - ../frontend/:/app/result_build/
 
   nginx:
-    image: nginx:latest
-    env_file: ./.env
+    image: vedy22/foodgram_gateway:latest
+    env_file: .env
     depends_on:
       - frontend
+      - backend
     ports:
       - "8000:80"
     volumes:
