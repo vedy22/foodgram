@@ -1,42 +1,42 @@
 version: '3.3'
 
 volumes:
+  pg_data:
   static:
-  backend_static:
-  backend_media:
-  postgres_data:
+  media:
+
 
 services:
   db:
-    image: postgres:13
+    image: postgres:latest
     env_file: .env
-    restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-  frontend:
-    image: vedy22/foodgram_frontend
-    volumes:
-      - static:/app/result_build/build/
+      - pg_data:/var/lib/postgresql/data
+  
   backend:
     image: vedy22/foodgram_backend
-    restart: always
     env_file: .env
-    volumes:
-      - backend_static:/app/static/
-      - backend_media:/app/media/
     depends_on:
       - db
-      - frontend
-  nginx:
-    image: vedy22/foodgram_nginx
-    restart: always
-    ports:
-      - 8080:80
     volumes:
-      - static:/usr/share/nginx/html/
-      - backend_static:/backend_static/
-      - backend_media:/backend_media/
-      - ./docs/:/usr/share/nginx/html/api/docs/
+      - static:/static
+      - media:/app/media
+  
+  frontend:
+    image: vedy22/foodgram_frontend
+    depends_on:
+      - backend
+    volumes:
+      - ../frontend/:/app/result_build/
+
+  gateway:
+    image: vedy22/foodgram_gateway
+    env_file: .env
     depends_on:
       - frontend
       - backend
+    ports:
+      - "8000:80"
+    volumes:
+      - static:/static
+      - media:/app/media
