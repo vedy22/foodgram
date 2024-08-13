@@ -8,35 +8,34 @@ volumes:
 
 services:
   db:
-    image: postgres
+    image: postgres:13.10
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
   
   backend:
-    image: vedy22/foodgram_backend
+    build: ./backend/
     env_file: .env
     depends_on:
       - db
     volumes:
-      - static:/static
+      - static:/backend_static
       - media:/app/media
   
   frontend:
-    image: vedy22/foodgram_frontend
-    depends_on:
-      - backend
-    volumes:
-      - ../frontend/:/app/result_build/
-
-  gateway:
-    image: vedy22/foodgram_gateway
     env_file: .env
+    build: ./frontend/
+    command: cp -r /app/build/. /frontend_static/
+    volumes:
+      - static:/frontend_static
+
+  infra:
+    build: ./infra/
     depends_on:
-      - frontend
+      - db
       - backend
     ports:
-      - "8000:80"
+      - 8000:80
     volumes:
-      - static:/static
+      - static:/staticfiles
       - media:/app/media
