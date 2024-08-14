@@ -1,6 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from users.models import User
+from django.utils import timezone
 
 MAX_LENGTH = 200
 
@@ -118,7 +119,10 @@ class Recipe(models.Model):
             MaxValueValidator(1000, message="Максимальное время 1000!"),
         ],
     )
-    pub_date = models.DateTimeField("Дата публикации", auto_now_add=True)
+    pub_date = models.DateTimeField(
+        verbose_name=('Дата публикации'),
+        default=timezone.now,
+    )
 
     class Meta:
         verbose_name = "Рецепт"
