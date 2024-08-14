@@ -1,15 +1,12 @@
 import os
 from pathlib import Path
 
-from django.conf import settings
 from dotenv import load_dotenv
 
 
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-CSV_DIR = os.path.join(settings.BASE_DIR, "data/ingredients.csv")
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'SECRET_KEY')
 
@@ -67,14 +64,24 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB", "django"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / 'db.sqlite3',
         "USER": os.getenv("POSTGRES_USER", "django"),
         "PASSWORD": os.getenv("POSTGRES_PASSWORD", ""),
         "HOST": os.getenv("DB_HOST", "127.0.0.1"),
         "PORT": os.getenv("DB_PORT", 5432),
     }
 }
+
+# DATABASES = {
+#    "default": {
+#      "ENGINE": "django.db.backends.sqlite3",
+#      "NAME": BASE_DIR / 'db.sqlite3',
+# или
+#      "ENGINE": 'django.db.backends.postgresql',
+#      "NAME": os.getenv('POSTGRES_DB', 'django'),
+#   }
+# }
 
 AUTH_USER_MODEL = 'users.User'
 
