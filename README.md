@@ -92,12 +92,7 @@
     ```bash
     sudo docker compose -f docker-compose.production.yml exec backend python manage.py createsuperuser
     ```
-    Заполните базу данных:
-    ```bash
-    sudo docker compose -f docker-compose.production.yml exec backend python manage.py load_ingredients
-    sudo docker compose -f docker-compose.production.yml exec backend python manage.py load_tags
-    ```
-
+    
 7. На сервере в редакторе nano откройте конфиг Nginx:
 
     ```bash
