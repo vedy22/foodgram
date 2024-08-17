@@ -1,5 +1,4 @@
 from io import BytesIO
-
 from django.contrib.auth import get_user_model
 from django.db.models.aggregates import Sum
 from django.http import FileResponse
@@ -13,7 +12,6 @@ from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
 from recipes.models import (FavouriteRecipe, Ingredient, Recipe,
                             RecipeIngredient, ShoppingCart, Tag)
 from users.models import Follow
