@@ -21,6 +21,8 @@ services:
     image: vedy22/foodgram_backend
     restart: always
     env_file: .env
+    ports:
+      - 8000:8000
     volumes:
       - backend_static:/app/static/
       - backend_media:/app/media/
