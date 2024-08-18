@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = os.getenv("DEBUG") == "TRUE"
+# DEBUG = os.getenv("DEBUG") == "TRUE"
 
-# DEBUG = "TRUE"
+DEBUG = "TRUE"
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1 localhost').split()
 # ALLOWED_HOSTS = ["127.0.0.1",]
