@@ -34,11 +34,17 @@ services:
     restart: always
     ports:
       - 8080:80
-    volumes:
-      - static:/usr/share/nginx/html/
-      - backend_static:/backend_static/
-      - backend_media:/backend_media/
-      - ./docs/:/usr/share/nginx/html/api/docs/
+#    volumes:
+#      - static:/usr/share/nginx/html/
+#      - backend_static:/backend_static/
+#      - backend_media:/backend_media/
+#      - ./docs/:/usr/share/nginx/html/api/docs/
     depends_on:
       - frontend
       - backend
+
+    volumes:
+      - static:/usr/share/nginx/html/
+      - backend_static:/var/html/static/
+      - backend_media:/var/html/media/
+      - ./docs/:/usr/share/nginx/html/api/docs/
