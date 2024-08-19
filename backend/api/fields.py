@@ -12,3 +12,12 @@ class Base64ImageField(serializers.ImageField):
 
             data = ContentFile(base64.b64decode(imgstr), name="temp." + ext)
         return super().to_internal_value(data)
+
+    def to_representation(self, value):
+        url = super().to_representation(value)
+        if url and "/backend_media" in url:
+            url_parts = url.split("/backend_media")
+            if len(url_parts) > 1:
+                url_without_host = '/backend_media' + url_parts[1]
+                return url_without_host
+        return url
