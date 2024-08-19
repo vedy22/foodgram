@@ -1,12 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from djoser.serializers import UserCreateSerializer, UserSerializer
-from rest_framework import serializers, status
-from rest_framework.exceptions import ValidationError
-
 from recipes.models import (FavouriteRecipe, Ingredient, Recipe,
                             RecipeIngredient, ShoppingCart, Tag)
+from rest_framework import serializers, status
+from rest_framework.exceptions import ValidationError
 from users.models import Follow
+
 from .fields import Base64ImageField
 from .serializers_mixins import IsAuthAndExistsMixin
 
