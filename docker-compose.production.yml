@@ -47,4 +47,4 @@ services:
       - static:/usr/share/nginx/html/
       - backend_static:/var/html/backend_static/
       - backend_media:/var/html/media/
-      - ./docs/:/usr/share/nginx/html/api/docs/
+      - ../docs/:/usr/share/nginx/html/api/docs/
