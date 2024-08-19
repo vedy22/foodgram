@@ -75,10 +75,10 @@ class RecipeViewSet(viewsets.ModelViewSet):
     )
     def download_shopping_cart(self, request):
         pdfmetrics.registerFont(
-            TTFont("DejaVuSans", "/backend/font/DejaVuSans.ttf")
+            TTFont("DejaVuSans", "/app/font/DejaVuSans.ttf")
         )
         pdfmetrics.registerFont(
-            TTFont("DejaVuSans-Bold", "/backend/font/DejaVuSans-Bold.ttf")
+            TTFont("DejaVuSans-Bold", "/app/font/DejaVuSans-Bold.ttf")
         )
 
         recipes = (
@@ -106,7 +106,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
                 y_position -= 20
             pdf.save()
             buffer.seek(0)
-        buffer = BytesIO()
+#        buffer = BytesIO()
         response = FileResponse(
             buffer, as_attachment=True, filename="shopping_cart.pdf"
         )
