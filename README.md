@@ -85,7 +85,7 @@
     ```bash
     sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
     sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
-    sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/static/. /static/
+    sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/static/. /backend_static/
     ```
     Создайте администратора:
 
