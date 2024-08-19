@@ -18,6 +18,6 @@ class Base64ImageField(serializers.ImageField):
         if url and "/backend_media" in url:
             url_parts = url.split("/backend_media")
             if len(url_parts) > 1:
-                url_without_host = '/media' + url_parts[1]
+                url_without_host = '/Backen_media' + url_parts[1]
                 return url_without_host
         return url
