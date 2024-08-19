@@ -75,10 +75,10 @@ class RecipeViewSet(viewsets.ModelViewSet):
     )
     def download_shopping_cart(self, request):
         pdfmetrics.registerFont(
-            TTFont("DejaVuSans", "/font/DejaVuSans.ttf")
+            TTFont("DejaVuSans", "/backend/font/DejaVuSans.ttf")
         )
         pdfmetrics.registerFont(
-            TTFont("DejaVuSans-Bold", "/font/DejaVuSans-Bold.ttf")
+            TTFont("DejaVuSans-Bold", "/backend/font/DejaVuSans-Bold.ttf")
         )
 
         recipes = (
