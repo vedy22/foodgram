@@ -74,9 +74,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
         permission_classes=(IsAuthenticated,)
     )
     def download_shopping_cart(self, request):
-        pdfmetrics.registerFont(TTFont("DejaVuSans", "DejaVuSans.ttf"))
         pdfmetrics.registerFont(
-            TTFont("DejaVuSans-Bold", "DejaVuSans-Bold.ttf")
+            TTFont("DejaVuSans", "/font/DejaVuSans.ttf")
+        )
+        pdfmetrics.registerFont(
+            TTFont("DejaVuSans-Bold", "/font/DejaVuSans-Bold.ttf")
         )
 
         recipes = (
