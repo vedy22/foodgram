@@ -22,7 +22,7 @@ class Recipe(models.Model):
     )
     image = models.ImageField(
         verbose_name="Изображение рецепта",
-        upload_to="/foodgram_backend/images",
+        upload_to="/images",
         null=False,
     )
     text = models.TextField(verbose_name="Описание", null=False)
